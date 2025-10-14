@@ -1,0 +1,50 @@
+name: Create Daily Summary
+
+on:
+  schedule:
+    - cron: '0 16 * * *'  # 每天UTC时间16:00运行（北京时间午夜24:00）
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  create-summary:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create daily summary
+        run: |
+          # 设置时区为北京时间
+          export TZ='Asia/Shanghai'
+          
+          # 创建目录路径
+          YEAR=$(date +%Y)
+          MONTH=$(date +%m)
+          DAY=$(date +%d)
+          DIR_PATH="$YEAR/$MONTH/$DAY"
+          
+          # 创建目录
+          mkdir -p $DIR_PATH
+          
+          # 创建总结文件
+          cat > "$DIR_PATH/summary.md" << EOF
+          # $(date +%Y年%m月%d日) 每日总结
+          
+         
+          
+          ## 💡 心得感悟
+                    知识点：
+                    技巧点：
+          
+         
+          
+          **自动创建时间：** $(date)
+          EOF
+
+      - name: Commit and push
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .
+          git commit -m "自动创建$(date +%Y年%m月%d日)每日总结" || exit 0
+          git push
