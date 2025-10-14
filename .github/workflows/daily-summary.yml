@@ -1,9 +1,10 @@
 name: Create Daily Summary
 
 on:
-  schedule:
-    - cron: '0 16 * * *'  # 每天UTC时间16:00运行（北京时间午夜24:00）
-  workflow_dispatch:  # 允许手动触发
+  workflow_dispatch:
+
+permissions:
+  contents: write  # 添加这行来授予写入权限
 
 jobs:
   create-summary:
@@ -11,6 +12,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create daily summary
         run: |
@@ -30,21 +33,24 @@ jobs:
           cat > "$DIR_PATH/summary.md" << EOF
           # $(date +%Y年%m月%d日) 每日总结
           
-         
+          ## 🎯 今日目标
+          - [ ] 
+          
+          ## 📝 工作记录
+          - 
           
           ## 💡 心得感悟
-                    知识点：
-                    技巧点：
           
-         
+          ## 🔮 明日计划
+          - 
           
           **自动创建时间：** $(date)
           EOF
 
-      - name: Commit and push
+      - name: Commit and push changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add .
-          git commit -m "自动创建$(date +%Y年%m月%d日)每日总结" || exit 0
+          git commit -m "自动创建$(date +%Y年%m月%d日)每日总结"
           git push
