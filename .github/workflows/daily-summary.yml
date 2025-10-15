@@ -1,7 +1,10 @@
 name: Create Daily Summary
 
 on:
-  workflow_dispatch:
+  schedule:
+    - cron: '0 16 * * *'  # 每天UTC时间16:00（北京时间24:00）运行
+  workflow_dispatch:       # 允许手动触发
+
 
 permissions:
   contents: write  # 添加这行来授予写入权限
