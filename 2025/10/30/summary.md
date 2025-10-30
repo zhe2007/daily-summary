@@ -5,6 +5,7 @@
       知识点：
           一、C语言：      
                       1、while循环语句中的contiue出现直接略过后面，返回判断的地方。
+                      2、getchar和putchar。前者定义返回值为整型，定义为int .
                       
 
           二、python：
