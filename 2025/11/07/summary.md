@@ -8,6 +8,14 @@
           二、python：
 
           三、高数：
+
+          四、ctf：
+                      1、shell 语言：nano 文件名 
+                      2 web ：创建docker 容器以访问本地网站，之后要记得停用
+                      3、手动运用镜像创建docker容器：
+                      sudo docker run -d --name 自己取名 -p 80:80 要使用的镜像
+                        
+
           
 
 
