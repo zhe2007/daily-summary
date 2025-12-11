@@ -17,6 +17,10 @@
                  printf("%s %s %d",p.name,p.sex,p.age);
            return 0;     
             }
+          2、使用指针对结构体变量进行访问，在指向类型时，用箭头“->”
+          viod printf1 (struct peo*sp){
+          printf("%s%s%d",sp->name,sp->sex,sp->age);
+          }
 
           二、python：
 
