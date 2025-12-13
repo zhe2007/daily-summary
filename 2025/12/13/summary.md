@@ -7,6 +7,36 @@
           1、数组的[]本身就是解引用
           2、数组一般存入内存的栈中，而指针指向内存任意地方
           3、函数名就是函数的地址，就像数组名是数组的地址一样
+          4、qsort排序函数的使用：给数组排序用的
+            int compare (const void* a,const void* b){
+                  return(*(int*)a - *(int*)b);//升序排序
+                  }
+            int main () {
+                  int N;
+                  int* A = (int*)malloc(N*sizeof(int))
+                  if (A==Null){
+                        print("faile!\n");
+                        return 1;
+                  }
+                  for (int i=1;i<=N;i++){
+                        scanf("%d",&A[i]);
+                  }
+                  qsort(
+                        A,           //数组名
+                        N,         //数组元素个数
+                        sizeof(int),//元素大小
+                        compare    //比较函数，这里并没有调用，这里只是个地址
+                  )
+                  int c = 1;
+                  for (int i=0; i<N; i++){
+                        if (A[i]<i+1){
+                              c =0;
+                              break;
+                        }
+                  
+            return 0;
+            }
+          
           
 
           二、python：
