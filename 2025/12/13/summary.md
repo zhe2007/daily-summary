@@ -21,7 +21,20 @@
       
       技巧点：
             一、C语言：
+            1、数组名就是指向数组第一个元素的指针
+             int N;
+             scanf("%d", &N);  // 读取同学数量
 
+             int* A = (int*)malloc(N * sizeof(int));  // 动态分配数组内存
+             if (A == NULL) {  // 检查内存分配是否成功
+           printf("Memory allocation failed!\n");
+           return 1;
+                   }
+             // 读取初始座位上的学号
+       for (int i = 0; i < N; i++) {
+           scanf("%d", &A[i]);
+             }
+            注意这里的malloc是分配内存，所以这里数组A的内存是连续的
           二、python：
 
           三、高数：
