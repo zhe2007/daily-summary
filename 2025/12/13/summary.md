@@ -13,6 +13,7 @@
                   }
             int main () {
                   int N;
+                  scanf ("%d",N);
                   int* A = (int*)malloc(N*sizeof(int))
                   if (A==Null){
                         print("faile!\n");
