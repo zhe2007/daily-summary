@@ -4,6 +4,36 @@
 ## 💡 心得感悟
       知识点：
           一、C语言：
+          #include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[])
+{
+  // 请在此输入您的代码
+  int n;
+  char s[1000000];
+  scanf("%d",&n);
+  scanf("%s",s);
+  int a[26]={0};
+  for (int i=0;i<n;i++){
+    a[s[i]-'a']++;
+
+  }
+  int count=0;
+  for(int i=0;i<26;i++){
+    if(a[i]%2==1){
+      count++;
+    }
+  }
+  if (count==0){
+    printf("1");
+  }
+  else{
+    printf ("%d",count);
+  }
+  return 0;
+}可以通多获取回文数列中某些奇数次出现的字母，
+来计算有最多可以组成多少个回文数列
 
           二、python：
 
