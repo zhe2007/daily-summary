@@ -11,7 +11,7 @@
              .insert(i,x)在i位置增加x
              .pop(i)删掉i位置上的
              .clear
-             .remove(x)
+             .remove(x)将第一个x删掉
              .reverse反顺序
              .index(x)统计x出现次数
           
