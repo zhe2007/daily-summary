@@ -7,6 +7,14 @@
 
           二、python：
           1、空集合形式a=set ({})或者()
+          2、.append(x)末尾加上x
+             .insert(i,x)在i位置增加x
+             .pop(i)删掉i位置上的
+             .clear
+             .remove(x)
+             .reverse反顺序
+             .index(x)统计x出现次数
+          
 
           三、高数：
 
