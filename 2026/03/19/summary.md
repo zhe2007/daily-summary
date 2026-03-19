@@ -6,6 +6,9 @@
           一、C语言：
 
           二、python：
+          1、turtle库
+          前进 forward() 简称fd()
+          后退 backward() 简称bk()
 
           三、高数：
 
