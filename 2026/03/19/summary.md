@@ -28,6 +28,19 @@
           4、网络爬虫方向
           requests简单处理HTTP请求
           scrapy web获取框架，半成品爬虫
+          5、数据分析
+          numpy科学计算库
+          scipy 再上个库的基础上增加函数
+          pandas 数据处理、数据分析
+          6、文本处理方向
+          pdfminer 读取pdf数据
+          openpyxl 处理excel表格
+          python-docx 以此类推
+          beautifulsoup4 解析和处理HTML、XML
+          7、数据可视化
+          matplotlib 二维图绘制
+          TVTK 三维可视化
+          mayavi 更方便的三维可视化
 
           三、高数：
 
