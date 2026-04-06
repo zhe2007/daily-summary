@@ -9,7 +9,7 @@
 
           三、高数：
 
-          四、汇编：
+          四、汇编：test eax,eax =cmp eax,0
 
           五、linux指令：
 
